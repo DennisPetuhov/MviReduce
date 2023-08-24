@@ -1,10 +1,7 @@
 package com.example.mvireduce.Recycler
 
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvireduce.ToDoItem
@@ -22,7 +19,7 @@ class MyAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        var binding = MyLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = MyLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
@@ -31,14 +28,7 @@ class MyAdapter : RecyclerView.Adapter<MyViewHolder>() {
         holder.binding.textView2.text = toDoItem.id.toString()
         holder.binding.textView3.text = toDoItem.text
         holder.binding.textView4.text = toDoItem.done.toString()
-//        holder.itemView.setOnLongClickListener {
-//            actions?.let {
-//                it.onLongClick(toDoItem.original_title.toString())
-//                Toast.makeText(holder.itemView.context, "${toDoItem.id}", Toast.LENGTH_LONG).show()
-//
-//            }
-//            true
-//        }
+
         holder.itemView.setOnClickListener {
 
             action?.onClick(toDoItem)
@@ -57,9 +47,7 @@ class MyAdapter : RecyclerView.Adapter<MyViewHolder>() {
         val difference = DiffUtil.calculateDiff(diffCallBack, true)
         myList = list
         difference.dispatchUpdatesTo(this)
-        //        movieList.clear()
-//        movieList.addAll(list)
-//        notifyDataSetChanged()
+
 
 
     }
